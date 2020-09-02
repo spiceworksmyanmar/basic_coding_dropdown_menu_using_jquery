@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+            crossorigin="anonymous"></script>
+    <style>
+        header{
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            padding-top: 10px;
+            height: 50px;
+            background: blue;
+            box-sizing: border-box;
+        }
+
+        ul{
+            float: right;
+            padding: 0px 0px;
+            margin: 0px 0px;
+        }
+
+        li{
+            float: left;
+            list-style: none;
+            padding: 5px 10px;
+            border: 1px solid #aaa;
+            margin-right: 10px;
+            cursor: pointer;
+            color: white;
+            position: relative;
+        }
+
+        li div{
+            display: none;
+            position: absolute;
+            top: 40px;
+            right: -5px;
+            border: 1px solid #aaa;
+            background: blue;
+            width: 95px;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <ul class="menu_container">
+            <li><span>Menu 1</span><div>Menu Item 1</div></li>
+            <li><span>Menu 2</span><div>Menu Item 2</div></li>
+            <li><span>Menu 3</span><div>Menu Item 3</div></li>
+            <li><span>Menu 4</span><div>Menu Item 4</div></li>
+            <li><span>Menu 5</span><div>Menu Item 5</div></li>
+        </ul>
+    </header>
+
+    <script>
+        $(document).click(function(e){
+            if($(e.target).closest('.menu_container').length == 0) $('ul li div').hide();
+        });
+
+        $('ul li').click(function(){
+            if($(this).find('div').is(':visible')) $(this).find('div').hide();
+            else {
+                $('ul li div').hide();
+                $(this).find('div').show();
+            }
+        });
+    </script>
+
+</body>
+</html>
